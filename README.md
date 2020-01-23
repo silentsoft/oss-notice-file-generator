@@ -5,7 +5,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=silentsoft_oss-notice-file-generator&metric=alert_status)](https://sonarcloud.io/dashboard?id=silentsoft_oss-notice-file-generator)
 [![HitCount](http://hits.dwyl.io/silentsoft/oss-notice-file-generator.svg)](http://hits.dwyl.io/silentsoft/oss-notice-file-generator)
 
-Simple Java library to generate Notice.md file for open source software
+Simple Java library to generate `NOTICE.md` file for open source software
 
 ### Dependency
 ```
@@ -43,7 +43,8 @@ public static void main(String[] args) {
 ```
 
 ### Result
-<pre>
+<blockquote>
+
 --------START OF THE NOTICE FILE--------
 # {{Your Product Name}}
 Copyright (c) {{Your Organization Name}}. All rights reserved.
@@ -281,7 +282,8 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 ---------END OF THE NOTICE FILE---------
-</pre>
+
+</blockquote>
 
 ### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
