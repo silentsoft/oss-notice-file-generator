@@ -1,11 +1,11 @@
 # OSS Notice File Generator
 
-![release](https://img.shields.io/badge/release-1.0.0-blue.svg)
+![release](https://img.shields.io/badge/release-2.0.0-blue.svg)
 [![Build Status](https://travis-ci.org/silentsoft/oss-notice-file-generator.svg?branch=master)](https://travis-ci.org/silentsoft/oss-notice-file-generator)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=silentsoft_oss-notice-file-generator&metric=alert_status)](https://sonarcloud.io/dashboard?id=silentsoft_oss-notice-file-generator)
 [![HitCount](http://hits.dwyl.io/silentsoft/oss-notice-file-generator.svg)](http://hits.dwyl.io/silentsoft/oss-notice-file-generator)
 
-Simple Java library to generate `NOTICE.md` file for open source software
+`OSS Notice File Generator` is a simple Java library to generate `NOTICE.md` file for open source software.
 
 ### Dependency
 ```
@@ -19,7 +19,7 @@ Simple Java library to generate `NOTICE.md` file for open source software
 	<dependency>
 		<groupId>org.silentsoft.oss</groupId>
 		<artifactId>notice-file-generator</artifactId>
-		<version>1.0.0</version>
+		<version>2.0.0</version>
 	</dependency>
 </dependencies>
 ```
@@ -29,13 +29,12 @@ Simple Java library to generate `NOTICE.md` file for open source software
 public static void main(String[] args) {
 	System.out.println("--------START OF THE NOTICE FILE--------");
 	
-	String markdown = NoticeFileGenerator.generate("{{Your Product Name}}", "{{Your Organization Name}}", new String[] {
-		"This product includes software developed by {{Your Organization Name}}.",
-		"This product includes software developed by The Apache Software Foundation (http://www.apache.org/)."
-	}, new Library[] {
-		new Library("first-3rd-party", "1.2.3", "https://github.com/silentsoft/first-3rd-party", new ApacheLicense2()),
-		new Library("second-3rd-party", "1.2.3", "https://github.com/silentsoft/second-3rd-party", new MITLicense())
-	});
+	String markdown = NoticeFileGenerator.newInstance("{{Your Product Name}}", "{{Your Organization Name}}")
+		.addText("This product includes software developed by {{Your Organization Name}}.")
+		.addText("This product includes software developed by The Apache Software Foundation (http://www.apache.org/).")
+		.addLibrary("first-3rd-party", "1.2.3", "https://github.com/silentsoft/first-3rd-party", new ApacheLicense2())
+		.addLibrary("second-3rd-party", "1.2.3", "https://github.com/silentsoft/second-3rd-party", new MITLicense())
+		.generate();
 	System.out.println(markdown);
 	
 	System.out.println("---------END OF THE NOTICE FILE---------");
