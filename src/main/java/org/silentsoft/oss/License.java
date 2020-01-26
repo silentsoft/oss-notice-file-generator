@@ -11,7 +11,7 @@ import java.nio.file.Path;
 
 public class License {
 	
-	private String licenseName;
+	private String name;
 	
 	private String content;
 	
@@ -20,12 +20,12 @@ public class License {
 	}
 	
 	public License(String licenseName, File licenseFile) throws FileNotFoundException {
-		this.licenseName = licenseName;
+		this.name = licenseName;
 		this.content = read(new FileReader(licenseFile));
 	}
 	
 	public License(String licenseName, InputStream licenseFileInputStream) {
-		this.licenseName = licenseName;
+		this.name = licenseName;
 		this.content = read(new InputStreamReader(licenseFileInputStream));
 	}
 	
@@ -46,8 +46,12 @@ public class License {
 		return buffer.toString();
 	}
 	
-	public String getLicenseName() {
-		return this.licenseName;
+	public String getName() {
+		return this.name;
+	}
+	
+	public String getContent() {
+		return this.content;
 	}
 	
 	@Override
@@ -55,7 +59,7 @@ public class License {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("______\r\n");
 		buffer.append("\r\n");
-		buffer.append(String.format("__%s__\r\n", licenseName));
+		buffer.append(String.format("__%s__\r\n", name));
 		buffer.append("\r\n");
 		buffer.append("```");
 		buffer.append("\r\n");

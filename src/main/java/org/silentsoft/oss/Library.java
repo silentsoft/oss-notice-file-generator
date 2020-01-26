@@ -44,7 +44,7 @@ public class Library {
 		if ("".equals(url) == false) {
 			buffer.append(String.format(" * %s\r\n", url));
 		}
-		buffer.append(String.format(" * %s\r\n", license.getLicenseName()));
+		buffer.append(String.format(" * %s\r\n", license.getName()));
 		return buffer.toString();
 	}
 
