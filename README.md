@@ -1,6 +1,6 @@
 # OSS Notice File Generator
 
-![release](https://img.shields.io/badge/release-2.0.0-blue.svg)
+![release](https://img.shields.io/badge/release-2.1.0-blue.svg)
 [![Build Status](https://travis-ci.org/silentsoft/oss-notice-file-generator.svg?branch=master)](https://travis-ci.org/silentsoft/oss-notice-file-generator)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=silentsoft_oss-notice-file-generator&metric=alert_status)](https://sonarcloud.io/dashboard?id=silentsoft_oss-notice-file-generator)
 [![HitCount](http://hits.dwyl.io/silentsoft/oss-notice-file-generator.svg)](http://hits.dwyl.io/silentsoft/oss-notice-file-generator)
@@ -19,7 +19,7 @@
 	<dependency>
 		<groupId>org.silentsoft.oss</groupId>
 		<artifactId>notice-file-generator</artifactId>
-		<version>2.0.0</version>
+		<version>2.1.0</version>
 	</dependency>
 </dependencies>
 ```
@@ -29,8 +29,8 @@
 public static void main(String[] args) {
 	System.out.println("--------START OF THE NOTICE FILE--------");
 	
-	String markdown = NoticeFileGenerator.newInstance("{{Your Product Name}}", "{{Your Organization Name}}")
-		.addText("This product includes software developed by {{Your Organization Name}}.")
+	String markdown = NoticeFileGenerator.newInstance("{{Your Product Name}}", "{{Owner}}")
+		.addText("This product includes software developed by {{Owner}}.")
 		.addText("This product includes software developed by The Apache Software Foundation (http://www.apache.org/).")
 		.addLibrary("first-3rd-party", "1.2.3", "https://github.com/silentsoft/first-3rd-party", new ApacheLicense2())
 		.addLibrary("second-3rd-party", "1.2.3", "https://github.com/silentsoft/second-3rd-party", new MITLicense())
@@ -46,9 +46,9 @@ public static void main(String[] args) {
 
 --------START OF THE NOTICE FILE--------
 # {{Your Product Name}}
-Copyright (c) {{Your Organization Name}}. All rights reserved.
+Copyright (c) {{Owner}}. All rights reserved.
 
-This product includes software developed by {{Your Organization Name}}.
+This product includes software developed by {{Owner}}.
 
 This product includes software developed by The Apache Software Foundation (http://www.apache.org/).
 

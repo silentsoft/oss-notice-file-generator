@@ -67,5 +67,19 @@ public class License {
 		buffer.append("```");
 		return buffer.toString();
 	}
+	
+	@Override
+	public int hashCode() {
+		return toString().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (getClass().isInstance(obj)) {
+			return toString().equals(getClass().cast(obj).toString());
+		}
+		
+		return super.equals(obj);
+	}
 
 }
