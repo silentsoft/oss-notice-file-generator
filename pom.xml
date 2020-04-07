@@ -1,18 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<groupId>org.silentsoft.oss</groupId>
 	<artifactId>notice-file-generator</artifactId>
-	<version>2.1.0</version>
+	<version>2.2.0</version>
+	
+	<name>OSS Notice File Generator</name>
+	<description>OSS Notice File Generator is a simple Java library to generate NOTICE.md file for open source software.</description>
+	<url>https://github.com/silentsoft/oss-notice-file-generator</url>
+	
+	<scm>
+		<url>https://github.com/silentsoft/oss-notice-file-generator.git</url>
+	</scm>
+	
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	
+	<developers>
+		<developer>
+			<name>Hyesung Lee</name>
+			<email>hyesung.lee@silentsoft.org</email>
+			<url>https://github.com/silentsoft</url>
+		</developer>
+	</developers>
+	
 	<properties>
-		<!-- Generic properties (Warning : DO NOT REMOVE) -->
 		<java.version>1.8</java.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+	
 	<build>
 		<resources>
 			<resource>
@@ -36,8 +62,21 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
+				<version>3.2.0</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -50,6 +89,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 	<profiles>
 		<profile>
 			<id>coverage</id>
@@ -77,7 +117,47 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+								<configuration>
+									<gpgArguments>
+										<arg>--pinentry-mode</arg>
+										<arg>loopback</arg>
+									</gpgArguments>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.6.8</version>
+						<extensions>true</extensions>
+						<configuration>
+							<serverId>ossrh</serverId>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -86,14 +166,11 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
 	<distributionManagement>
-		<repository>
-			<id>silentsoft-maven-releases</id>
-			<url>http://nexus.silentsoft.org/repository/maven-releases</url>
-		</repository>
 		<snapshotRepository>
-			<id>silentsoft-maven-snapshots</id>
-			<url>http://nexus.silentsoft.org/repository/maven-snapshots</url>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 </project>
