@@ -1,6 +1,6 @@
 # OSS Notice File Generator
 
-![release](https://img.shields.io/badge/release-2.1.0-blue.svg)
+![release](https://img.shields.io/badge/release-2.2.0-blue.svg)
 [![Build Status](https://travis-ci.org/silentsoft/oss-notice-file-generator.svg?branch=master)](https://travis-ci.org/silentsoft/oss-notice-file-generator)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=silentsoft_oss-notice-file-generator&metric=alert_status)](https://sonarcloud.io/dashboard?id=silentsoft_oss-notice-file-generator)
 [![HitCount](http://hits.dwyl.io/silentsoft/oss-notice-file-generator.svg)](http://hits.dwyl.io/silentsoft/oss-notice-file-generator)
@@ -9,17 +9,11 @@
 
 ### Dependency
 ```
-<repositories>
-	<repository>
-		<id>silentsoft-repository</id>
-		<url>http://nexus.silentsoft.org/repository/maven-public</url>
-	</repository>
-</repositories>
 <dependencies>
 	<dependency>
 		<groupId>org.silentsoft.oss</groupId>
 		<artifactId>notice-file-generator</artifactId>
-		<version>2.1.0</version>
+		<version>2.2.0</version>
 	</dependency>
 </dependencies>
 ```
