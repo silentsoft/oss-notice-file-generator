@@ -2,6 +2,12 @@ package org.silentsoft.oss.license;
 
 import org.silentsoft.oss.License;
 
+/**
+ * Use {@link ApacheLicense2_0} instead.
+ * 
+ * @author silentsoft
+ */
+@Deprecated
 public class ApacheLicense2 extends License {
 
 	public ApacheLicense2() {
