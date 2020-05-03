@@ -2,6 +2,11 @@ package org.silentsoft.oss.license;
 
 import org.silentsoft.oss.License;
 
+/**
+ * BSD 2-Clause "Simplified" License
+ * 
+ * @author silentsoft
+ */
 public class BSD2ClauseLicense extends License {
 	
 	public BSD2ClauseLicense() {
