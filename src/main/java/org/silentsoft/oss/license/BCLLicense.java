@@ -2,6 +2,11 @@ package org.silentsoft.oss.license;
 
 import org.silentsoft.oss.License;
 
+/**
+ * Oracle Binary Code License Agreement for the Java SE Platform Products and JavaFX
+ * 
+ * @author silentsoft
+ */
 public class BCLLicense extends License {
 
 	public BCLLicense() {
