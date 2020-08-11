@@ -12,6 +12,8 @@ import org.silentsoft.oss.license.ApacheLicense2_0;
 import org.silentsoft.oss.license.BCLLicense;
 import org.silentsoft.oss.license.BSD2ClauseLicense;
 import org.silentsoft.oss.license.BSD3ClauseLicense;
+import org.silentsoft.oss.license.EPL1_0License;
+import org.silentsoft.oss.license.EPL2_0License;
 import org.silentsoft.oss.license.GPL2_0License;
 import org.silentsoft.oss.license.GPL3_0License;
 import org.silentsoft.oss.license.ICULicense;
@@ -46,6 +48,16 @@ public class LicenseTest {
 	@Test
 	public void BSD3ClauseLicenseTest() throws IOException {
 		Assert.assertEquals(read("/license/BSD-3-Clause.txt"), new BSD3ClauseLicense().getContent());
+	}
+	
+	@Test
+	public void EPL1_0LicenseTest() throws IOException {
+		Assert.assertEquals(read("/license/EPL-1.0.txt"), new EPL1_0License().getContent());
+	}
+	
+	@Test
+	public void EPL2_0LicenseTest() throws IOException {
+		Assert.assertEquals(read("/license/EPL-2.0.txt"), new EPL2_0License().getContent());
 	}
 	
 	@Test
