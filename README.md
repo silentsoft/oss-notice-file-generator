@@ -3,7 +3,7 @@
 ![release](https://img.shields.io/badge/release-2.2.3-blue.svg)
 [![Build Status](https://travis-ci.com/silentsoft/oss-notice-file-generator.svg?branch=master)](https://travis-ci.com/silentsoft/oss-notice-file-generator)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=silentsoft_oss-notice-file-generator&metric=alert_status)](https://sonarcloud.io/dashboard?id=silentsoft_oss-notice-file-generator)
-[![HitCount](http://hits.dwyl.io/silentsoft/oss-notice-file-generator.svg)](http://hits.dwyl.io/silentsoft/oss-notice-file-generator)
+[![HitCount](http://hits.dwyl.com/silentsoft/oss-notice-file-generator.svg)](http://hits.dwyl.com/silentsoft/oss-notice-file-generator)
 
 `OSS Notice File Generator` is a simple Java library to generate `NOTICE.md` file for open source software.
 
