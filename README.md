@@ -7,15 +7,13 @@
 
 `OSS Notice File Generator` is a simple Java library to generate `NOTICE.md` file for open source software.
 
-### Dependency
-```
-<dependencies>
-	<dependency>
-		<groupId>org.silentsoft.oss</groupId>
-		<artifactId>notice-file-generator</artifactId>
-		<version>2.2.3</version>
-	</dependency>
-</dependencies>
+### Maven Central
+```xml
+<dependency>
+    <groupId>org.silentsoft.oss</groupId>
+    <artifactId>notice-file-generator</artifactId>
+    <version>2.2.3</version>
+</dependency>
 ```
 
 ### Usage
