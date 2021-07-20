@@ -1,5 +1,7 @@
 /target/
+.idea/
 .settings/
 .classpath
 .project
 .DS_Store
+*.iml
