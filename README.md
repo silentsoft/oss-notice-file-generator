@@ -12,24 +12,24 @@
 <dependency>
     <groupId>org.silentsoft.oss</groupId>
     <artifactId>notice-file-generator</artifactId>
-    <version>2.2.3</version>
+    <version>2.3.0</version>
 </dependency>
 ```
 
 ### Usage
 ```java
 public static void main(String[] args) {
-	System.out.println("--------START OF THE NOTICE FILE--------");
-	
-	String markdown = NoticeFileGenerator.newInstance("{{Your Product Name}}", "{{Owner}}")
-		.addText("This product includes software developed by {{Owner}}.")
-		.addText("This product includes software developed by The Apache Software Foundation (http://www.apache.org/).")
-		.addLibrary("first-3rd-party", "1.2.3", "https://github.com/silentsoft/first-3rd-party", new ApacheLicense2())
-		.addLibrary("second-3rd-party", "1.2.3", "https://github.com/silentsoft/second-3rd-party", new MITLicense())
-		.generate();
-	System.out.println(markdown);
-	
-	System.out.println("---------END OF THE NOTICE FILE---------");
+    System.out.println("--------START OF THE NOTICE FILE--------");
+
+    String markdown = NoticeFileGenerator.newInstance("{{Your Product Name}}", "{{Owner}}")
+        .addText("This product includes software developed by {{Owner}}.")
+        .addText("This product includes software developed by The Apache Software Foundation (http://www.apache.org/).")
+        .addLibrary("first-3rd-party", "1.2.3", "https://github.com/silentsoft/first-3rd-party", License.of("Apache License 2.0"))
+        .addLibrary("second-3rd-party", "1.2.3", "https://github.com/silentsoft/second-3rd-party", License.of("MIT"))
+        .generate();
+    System.out.println(markdown);
+
+    System.out.println("---------END OF THE NOTICE FILE---------");
 }
 ```
 

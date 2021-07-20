@@ -1,5 +1,8 @@
 package org.silentsoft.oss;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Library {
 	
 	private String name;
@@ -8,17 +11,17 @@ public class Library {
 	
 	private String url;
 	
-	private License license;
+	private License[] licenses;
 	
-	public Library(String name, String url, License license) {
-		this(name, "", url, license);
+	public Library(String name, String url, License... licenses) {
+		this(name, "", url, licenses);
 	}
 	
-	public Library(String name, String version, String url, License license) {
+	public Library(String name, String version, String url, License... licenses) {
 		this.name = name;
 		this.version = version;
 		this.url = url;
-		this.license = license;
+		this.licenses = licenses;
 	}
 	
 	public String getName() {
@@ -33,18 +36,20 @@ public class Library {
 		return url;
 	}
 
-	public License getLicense() {
-		return license;
+	public License[] getLicenses() {
+		return licenses;
 	}
 
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(String.format("__%s__\r\n", "".equals(version) ? name : String.join(" ", name, version)));
-		if ("".equals(url) == false) {
+		if (url != null && "".equals(url) == false) {
 			buffer.append(String.format(" * %s\r\n", url));
 		}
-		buffer.append(String.format(" * %s\r\n", license.getName()));
+		if (licenses != null && licenses.length > 0) {
+			buffer.append(String.format(" * %s\r\n", String.join(", ", Stream.of(licenses).map(License::getName).collect(Collectors.toList()))));//license.getName()));
+		}
 		return buffer.toString();
 	}
 

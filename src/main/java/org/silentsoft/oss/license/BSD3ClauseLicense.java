@@ -13,4 +13,20 @@ public class BSD3ClauseLicense extends License {
 		super("BSD-3-Clause", BSD3ClauseLicense.class.getResourceAsStream("/license/BSD-3-Clause.txt"));
 	}
 
+	@Override
+	public String[] getAliases() {
+		return new String[] {
+				"BSD 3-Clause New or Revised License",
+				"BSD 3-Clause \"New\" or \"Revised\" License",
+				"BSD 3-Clause New License",
+				"BSD 3-Clause \"New\" License",
+				"BSD 3-Clause Revised License",
+				"BSD 3-Clause \"Revised\" License",
+				"BSD 3-Clause License",
+				"BSD 3-Clause",
+				"BSD-3-Clause",
+				"BSD 3 Clause"
+		};
+	}
+
 }

@@ -6,7 +6,7 @@
 	
 	<groupId>org.silentsoft.oss</groupId>
 	<artifactId>notice-file-generator</artifactId>
-	<version>2.2.3</version>
+	<version>2.3.0</version>
 	
 	<name>OSS Notice File Generator</name>
 	<description>OSS Notice File Generator is a simple Java library to generate NOTICE.md file for open source software.</description>
@@ -40,17 +40,6 @@
 	</properties>
 	
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

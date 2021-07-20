@@ -1,120 +1,70 @@
 package org.silentsoft.oss;
 
+import org.junit.Assert;
+import org.junit.Test;
+import org.silentsoft.oss.license.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.silentsoft.oss.license.ApacheLicense2;
-import org.silentsoft.oss.license.ApacheLicense2_0;
-import org.silentsoft.oss.license.BCLLicense;
-import org.silentsoft.oss.license.BSD2ClauseLicense;
-import org.silentsoft.oss.license.BSD3ClauseLicense;
-import org.silentsoft.oss.license.EPL1_0License;
-import org.silentsoft.oss.license.EPL2_0License;
-import org.silentsoft.oss.license.GPL2_0License;
-import org.silentsoft.oss.license.GPL3_0License;
-import org.silentsoft.oss.license.ICULicense;
-import org.silentsoft.oss.license.JSONLicense;
-import org.silentsoft.oss.license.LGPL2_1License;
-import org.silentsoft.oss.license.LGPL3License;
-import org.silentsoft.oss.license.LGPL3_0License;
-import org.silentsoft.oss.license.MITLicense;
 
 public class LicenseTest {
-	
+
 	@Test
-	public void ApacheLicense2Test() throws IOException {
-		Assert.assertEquals(read("/license/Apache License 2.0.txt"), new ApacheLicense2().getContent());
+	public void contentTest() throws IOException {
+		check("/license/Apache License 2.0.txt", new ApacheLicense2());
+		check("/license/Apache License 2.0.txt", new ApacheLicense2_0());
+		check("/license/BCL License.txt", new BCLLicense());
+		check("/license/BSD-2-Clause.txt", new BSD2ClauseLicense());
+		check("/license/BSD-3-Clause.txt", new BSD3ClauseLicense());
+		check("/license/0BSD.txt", new BSDZeroClauseLicense());
+		check("/license/CC-BY-3.0.txt", new CCBY3_0License());
+		check("/license/CC-BY-4.0.txt", new CCBY4_0License());
+		check("/license/CC0-1.0.txt", new CCZero1_0License());
+		check("/license/CDDL-1.1.txt", new CDDL1_1License());
+		check("/license/EDL-1.0.txt", new EDL1_0License());
+		check("/license/EPL-1.0.txt", new EPL1_0License());
+		check("/license/EPL-2.0.txt", new EPL2_0License());
+		check("/license/GPL-2.0-CE.txt", new GPL2_0CELicense());
+		check("/license/GPL-2.0.txt", new GPL2_0License());
+		check("/license/GPL-3.0.txt", new GPL3_0License());
+		check("/license/ICU License.txt", new ICULicense());
+		check("/license/ISC License.txt", new ISCLicense());
+		check("/license/JSON License.txt", new JSONLicense());
+		check("/license/LGPL-2.1.txt", new LGPL2_1License());
+		check("/license/LGPL-3.0.txt", new LGPL3_0License());
+		check("/license/LGPL-3.0.txt", new LGPL3License());
+		check("/license/MIT License.txt", new MITLicense());
+		check("/license/MPL-1.1.txt", new MPL1_1License());
+		check("/license/MPL-2.0.txt", new MPL2_0License());
+		check("/license/ODC-By-1.0.txt", new ODCBy1_0License());
+		check("/license/WTFPL.txt", new WTFPLLicense());
+		check("/license/Zlib License.txt", new ZlibLicense());
 	}
-	
-	@Test
-	public void ApacheLicense2_0Test() throws IOException {
-		Assert.assertEquals(read("/license/Apache License 2.0.txt"), new ApacheLicense2_0().getContent());
-	}
-	
-	@Test
-	public void BCLLicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/BCL License.txt"), new BCLLicense().getContent());
-	}
-	
-	@Test
-	public void BSD2ClauseLicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/BSD-2-Clause.txt"), new BSD2ClauseLicense().getContent());
-	}
-	
-	@Test
-	public void BSD3ClauseLicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/BSD-3-Clause.txt"), new BSD3ClauseLicense().getContent());
-	}
-	
-	@Test
-	public void EPL1_0LicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/EPL-1.0.txt"), new EPL1_0License().getContent());
-	}
-	
-	@Test
-	public void EPL2_0LicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/EPL-2.0.txt"), new EPL2_0License().getContent());
-	}
-	
-	@Test
-	public void GPL2_0LicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/GPL-2.0.txt"), new GPL2_0License().getContent());
-	}
-	
-	@Test
-	public void GPL3_0LicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/GPL-3.0.txt"), new GPL3_0License().getContent());
-	}
-	
-	@Test
-	public void ICULicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/ICU License.txt"), new ICULicense().getContent());
-	}
-	
-	@Test
-	public void JSONLicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/JSON License.txt"), new JSONLicense().getContent());
-	}
-	
-	@Test
-	public void LGPL2_1LicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/LGPL-2.1.txt"), new LGPL2_1License().getContent());
-	}
-	
-	@Test
-	public void LGPL3_0LicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/LGPL-3.0.txt"), new LGPL3_0License().getContent());
-	}
-	
-	@Test
-	public void LGPL3LicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/LGPL-3.0.txt"), new LGPL3License().getContent());
-	}
-	
-	@Test
-	public void MITLicenseTest() throws IOException {
-		Assert.assertEquals(read("/license/MIT License.txt"), new MITLicense().getContent());
-	}
-	
-	private String read(String resource) throws IOException {
-		return read(new InputStreamReader(LicenseTest.class.getResourceAsStream(resource)));
-	}
-	
-	private String read(Reader reader) throws IOException {
-		StringBuffer buffer = new StringBuffer();
-		
-		BufferedReader bufferedReader = new BufferedReader(reader);
-		String line = null;
-		while ((line = bufferedReader.readLine()) != null) {
-			buffer.append(line);
-			buffer.append("\r\n");
+
+	private void check(String resource, License license) throws IOException {
+		String content = read(resource);
+		Assert.assertEquals(content, license.getContent());
+		Assert.assertEquals(content, License.of(license.getName()).getContent());
+		if (license.getAliases() != null && license.getAliases().length > 0) {
+			for (String alias : license.getAliases()) {
+				Assert.assertEquals(content, License.of(alias).getContent());
+			}
 		}
-		bufferedReader.close();
-		
+	}
+
+	private String read(String resource) throws IOException {
+		StringBuffer buffer = new StringBuffer();
+
+		try (InputStreamReader inputStreamReader = new InputStreamReader(LicenseTest.class.getResourceAsStream(resource));
+		     BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
+			String line = null;
+			while ((line = bufferedReader.readLine()) != null) {
+				buffer.append(line);
+				buffer.append("\r\n");
+			}
+		}
+
 		return buffer.toString();
 	}
 

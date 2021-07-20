@@ -13,4 +13,9 @@ public class ICULicense extends License {
 		super("ICU License", ICULicense.class.getResourceAsStream("/license/ICU License.txt"));
 	}
 
+	@Override
+	public String[] getAliases() {
+		return new String[] { "ICU License", "ICU License - ICU 1.8.1 and later", "ICU" };
+	}
+
 }

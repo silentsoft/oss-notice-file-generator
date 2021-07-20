@@ -13,4 +13,9 @@ public class MITLicense extends License {
 		super("MIT License", MITLicense.class.getResourceAsStream("/license/MIT License.txt"));
 	}
 
+	@Override
+	public String[] getAliases() {
+		return new String[] { "MIT License", "The MIT License", "MIT" };
+	}
+
 }
