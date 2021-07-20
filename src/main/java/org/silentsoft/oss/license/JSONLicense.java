@@ -14,4 +14,9 @@ public class JSONLicense extends License {
 		super("JSON License", JSONLicense.class.getResourceAsStream("/license/JSON License.txt"));
 	}
 
+	@Override
+	public String[] getAliases() {
+		return new String[] { "JSON License", "JSON" };
+	}
+
 }

@@ -1,7 +1,9 @@
 package org.silentsoft.oss;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class NoticeFileGenerator {
@@ -41,9 +43,9 @@ public class NoticeFileGenerator {
 		for (Library library : libraries) {
 			buffer.append(String.format("%s\r\n", library.toString()));
 		}
-		Stream.of(libraries).map(Library::getLicense).distinct().forEach((license) -> {
-			buffer.append(String.format("%s\r\n", license.toString()));	
-		});
+		Stream.of(libraries).flatMap(library -> Arrays.stream(library.getLicenses())).distinct().forEach((license -> {
+			buffer.append(String.format("%s\r\n", license.toString()));
+		}));
 		
 		return buffer.toString().trim();
 	}
@@ -85,12 +87,12 @@ public class NoticeFileGenerator {
 			return this;
 		}
 		
-		public NoticeFileBuilder addLibrary(String name, String url, License license) {
-			return addLibrary(new Library(name, url, license));
+		public NoticeFileBuilder addLibrary(String name, String url, License... licenses) {
+			return addLibrary(new Library(name, url, licenses));
 		}
 		
-		public NoticeFileBuilder addLibrary(String name, String version, String url, License license) {
-			return addLibrary(new Library(name, version, url, license));
+		public NoticeFileBuilder addLibrary(String name, String version, String url, License... licenses) {
+			return addLibrary(new Library(name, version, url, licenses));
 		}
 		
 		public String generate() {

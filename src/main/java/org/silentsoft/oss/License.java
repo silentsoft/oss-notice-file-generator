@@ -1,17 +1,13 @@
 package org.silentsoft.oss;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.nio.file.Path;
 
 public class License {
 	
 	private String name;
+
+	private String[] aliases;
 	
 	private String content;
 	
@@ -40,14 +36,17 @@ public class License {
 			}
 			bufferedReader.close();
 		} catch (Exception e) {
-			e.printStackTrace();
-			buffer.append("#ERROR.");
+			throw new RuntimeException(e);
 		}
 		return buffer.toString();
 	}
 	
 	public String getName() {
 		return this.name;
+	}
+
+	public String[] getAliases() {
+		return this.aliases;
 	}
 	
 	public String getContent() {
@@ -80,6 +79,10 @@ public class License {
 		}
 		
 		return super.equals(obj);
+	}
+
+	public static License of(String nameOrAlias) {
+		return LicenseDictionary.get(nameOrAlias);
 	}
 
 }
