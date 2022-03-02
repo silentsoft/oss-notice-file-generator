@@ -17,6 +17,11 @@ public final class LicenseDictionary {
         dictionary = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
         licenses = new ArrayList<>();
+        licenses.add(new AFL1_1License());
+        licenses.add(new AFL1_2License());
+        licenses.add(new AFL2_0License());
+        licenses.add(new AFL2_1License());
+        licenses.add(new AFL3_0License());
         licenses.add(new ApacheLicense2_0());
         licenses.add(new BCLLicense());
         licenses.add(new BSD2ClauseLicense());
@@ -41,6 +46,8 @@ public final class LicenseDictionary {
         licenses.add(new MPL1_1License());
         licenses.add(new MPL2_0License());
         licenses.add(new ODCBy1_0License());
+        licenses.add(new Python2_0License());
+        licenses.add(new Unlicense());
         licenses.add(new WTFPLLicense());
         licenses.add(new ZlibLicense());
 

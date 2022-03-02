@@ -12,6 +12,11 @@ public class LicenseTest {
 
 	@Test
 	public void contentTest() throws IOException {
+		check("/license/AFL-1.1.txt", new AFL1_1License());
+		check("/license/AFL-1.2.txt", new AFL1_2License());
+		check("/license/AFL-2.0.txt", new AFL2_0License());
+		check("/license/AFL-2.1.txt", new AFL2_1License());
+		check("/license/AFL-3.0.txt", new AFL3_0License());
 		check("/license/Apache License 2.0.txt", new ApacheLicense2());
 		check("/license/Apache License 2.0.txt", new ApacheLicense2_0());
 		check("/license/BCL License.txt", new BCLLicense());
@@ -38,6 +43,8 @@ public class LicenseTest {
 		check("/license/MPL-1.1.txt", new MPL1_1License());
 		check("/license/MPL-2.0.txt", new MPL2_0License());
 		check("/license/ODC-By-1.0.txt", new ODCBy1_0License());
+		check("/license/Python-2.0.txt", new Python2_0License());
+		check("/license/Unlicense.txt", new Unlicense());
 		check("/license/WTFPL.txt", new WTFPLLicense());
 		check("/license/Zlib License.txt", new ZlibLicense());
 	}
