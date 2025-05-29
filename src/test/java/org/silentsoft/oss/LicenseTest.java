@@ -7,6 +7,7 @@ import org.silentsoft.oss.license.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class LicenseTest {
 
@@ -63,8 +64,8 @@ public class LicenseTest {
 	private String read(String resource) throws IOException {
 		StringBuffer buffer = new StringBuffer();
 
-		try (InputStreamReader inputStreamReader = new InputStreamReader(LicenseTest.class.getResourceAsStream(resource));
-		     BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
+		try (InputStreamReader inputStreamReader = new InputStreamReader(LicenseTest.class.getResourceAsStream(resource), StandardCharsets.UTF_8);
+			 BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
 			String line = null;
 			while ((line = bufferedReader.readLine()) != null) {
 				buffer.append(line);
@@ -73,6 +74,12 @@ public class LicenseTest {
 		}
 
 		return buffer.toString();
+	}
+
+	@Test
+	public void encodingTest() {
+		Assert.assertTrue(new AFL2_1License().getContent().contains("17 U.S.C. § 101 et seq."));
+		Assert.assertTrue(new CCBY4_0License().getContent().contains("the “Licensor.”"));
 	}
 
 }

@@ -1,28 +1,27 @@
 package org.silentsoft.oss;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class License {
+public abstract class License {
 	
 	private String name;
-
-	private String[] aliases;
 	
 	private String content;
 	
-	public License(String licenseName, Path licenseFilePath) throws FileNotFoundException {
+	public License(String licenseName, Path licenseFilePath) throws IOException {
 		this(licenseName, licenseFilePath.toFile());
 	}
 	
-	public License(String licenseName, File licenseFile) throws FileNotFoundException {
-		this.name = licenseName;
-		this.content = read(new FileReader(licenseFile));
+	public License(String licenseName, File licenseFile) throws IOException {
+		this(licenseName, Files.newInputStream(licenseFile.toPath()));
 	}
 	
 	public License(String licenseName, InputStream licenseFileInputStream) {
 		this.name = licenseName;
-		this.content = read(new InputStreamReader(licenseFileInputStream));
+		this.content = read(new InputStreamReader(licenseFileInputStream, StandardCharsets.UTF_8));
 	}
 	
 	private String read(Reader reader) {
@@ -45,9 +44,7 @@ public class License {
 		return this.name;
 	}
 
-	public String[] getAliases() {
-		return this.aliases;
-	}
+	public abstract String[] getAliases();
 	
 	public String getContent() {
 		return this.content;
